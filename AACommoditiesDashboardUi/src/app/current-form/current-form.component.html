@@ -1,0 +1,59 @@
+<h1>Current Form</h1>
+<p>
+    New Trade Actions: Last 5 days, newest first.
+</p>
+
+<div>
+    <p>Filters:</p>
+    <mat-form-field appearance="fill">
+        <mat-label>Model</mat-label>
+        <mat-select (selectionChange)="onModelChange($event)">
+            <mat-option [value]="-1">None</mat-option>
+            <mat-option *ngFor="let model of models$ | async" [value]="model.id">
+                {{model.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Commodity</mat-label>
+        <mat-select (selectionChange)="onCommodityChange($event)">
+            <mat-option [value]="-1">None</mat-option>
+            <mat-option *ngFor="let commodity of commodities$ | async" [value]="commodity.id">
+                {{commodity.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</div>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="tableDataSource">
+        <ng-container matColumnDef="model">
+            <th mat-header-cell *matHeaderCellDef>Model</th>
+            <td mat-cell *matCellDef="let currentForm">{{ currentForm.modelName }} </td>
+        </ng-container>
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let currentForm">{{ currentForm.commodityName }} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="nta1">
+            <th mat-header-cell colspan="5" *matHeaderCellDef>New Trade Actions (left-to-right, newest first)</th>
+            <td mat-cell *matCellDef="let currentForm">{{ currentForm.values[0] }} </td>
+        </ng-container>
+        <ng-container matColumnDef="nta2">
+            <td mat-cell *matCellDef="let currentForm">{{ currentForm.values[1] }} </td>
+        </ng-container>
+        <ng-container matColumnDef="nta3">
+            <td mat-cell *matCellDef="let currentForm">{{ currentForm.values[2] }} </td>
+        </ng-container>
+        <ng-container matColumnDef="nta4">
+            <td mat-cell *matCellDef="let currentForm">{{ currentForm.values[3] }} </td>
+        </ng-container>
+        <ng-container matColumnDef="nta5">
+            <td mat-cell *matCellDef="let currentForm">{{ currentForm.values[4] }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns.slice(0, 3);"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</div>
