@@ -59,7 +59,7 @@ namespace AA.CommoditiesDashboard.Api.Tests.Integration.Data
         {
             return new CommoditiesContext(
                     new DbContextOptionsBuilder<CommoditiesContext>()
-                    .UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=AA.CommoditiesDashboard;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+                    .UseSqlServer(Utilities.GetDevelopmentConnectionString())
                     .EnableSensitiveDataLogging()
                     .Options);
         }
