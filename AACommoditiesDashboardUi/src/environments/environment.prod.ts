@@ -1,4 +1,4 @@
 export const environment = {
-  production: true,
-  commoditiesApi: ''
+    production: true,
+    commoditiesApi: "",
 };

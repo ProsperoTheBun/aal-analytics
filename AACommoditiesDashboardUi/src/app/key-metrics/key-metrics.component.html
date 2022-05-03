@@ -1,0 +1,31 @@
+<h1>Key Metrics</h1>
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource$">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let metric">{{ metric.name }} </td>
+        </ng-container>
+        <ng-container matColumnDef="model">
+            <th mat-header-cell *matHeaderCellDef>Model</th>
+            <td mat-cell *matCellDef="let metric">{{ metric.model }} </td>
+        </ng-container>
+        <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef>Date</th>
+            <td mat-cell *matCellDef="let metric">{{ metric.date | date: 'dd/MM/yyyy' }} </td>
+        </ng-container>
+        <ng-container matColumnDef="profitAndLoss">
+            <th mat-header-cell *matHeaderCellDef>PnL</th>
+            <td mat-cell *matCellDef="let metric" [ngClass]="metric.isProfitAndLossHighlight ? 'pop': ''">{{
+                metric.profitAndLoss }} </td>
+        </ng-container>
+        <ng-container matColumnDef="profitAndLossYearToDate">
+            <th mat-header-cell *matHeaderCellDef>PnL YTD</th>
+            <td mat-cell *matCellDef="let metric" [ngClass]="metric.isProfitAndLossYearToDateHighlight ? 'pop': ''">
+                {{ metric.profitAndLossYearToDate }} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</div>
