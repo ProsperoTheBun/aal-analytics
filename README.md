@@ -1,7 +1,7 @@
-# Anglo American Analytics Dashboard
+#  Analytics Dashboard
 ### Author: Marcus Cunningham
-Forked from https://github.com/anglocodingtest/boiler-plate
 
+Based on specification: [CodingChallenge.docx](/CodingChallenge.docx)
 
 ## Installation and running
 1. Clone the repo to your local machine.
